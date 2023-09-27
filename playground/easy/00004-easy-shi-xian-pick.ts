@@ -24,6 +24,7 @@
       title: 'Clean room',
       completed: false,
   }
+
   ```
 
   > 在 Github 上查看：https://tsch.js.org/4/zh-CN
@@ -31,7 +32,9 @@
 
 /* _____________ 你的代码 _____________ */
 
-type MyPick<T, K> = any
+type MyPick<T, K> = {
+  [P in keyof T as P extends K ? P : never]: T[P]
+}
 
 /* _____________ 测试用例 _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'
