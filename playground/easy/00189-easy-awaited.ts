@@ -22,7 +22,7 @@
 
 /* _____________ 你的代码 _____________ */
 
-type MyAwaited<T> = any
+type MyAwaited<T> = T extends PromiseLike<infer P> ? P extends PromiseLike<any> ? Awaited<P> : P : never
 
 /* _____________ 测试用例 _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'
